@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes, maximum-scale=5">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Sensex Tracker">
+  <meta name="theme-color" content="#1e40af">
+  <title>Sensex Options Tracker - Trailing Stoploss</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <h1>📊 Sensex Options Tracker</h1>
+        <p class="subtitle">Real-time Trailing Stoploss Management</p>
+        
+        <!-- Market Ticker -->
+        <div class="market-ticker">
+          <span class="ticker-item up">SENSEX ▲ 75,423</span>
+          <span class="ticker-item up">VOLATILITY ▲ 18.5%</span>
+          <span class="ticker-item up">SENSEX OPTIONS ▲ Active</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Add New Option Section -->
+      <section class="add-option-section">
+        <h2>Track New Option</h2>
+        <form id="addOptionForm" class="form-grid">
+          <div class="form-group">
+            <label for="optionType">Option Type *</label>
+            <select id="optionType" required>
+              <option value="">Select Type</option>
+              <option value="CALL">CALL</option>
+              <option value="PUT">PUT</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="strike">Strike Price *</label>
+            <input type="number" id="strike" placeholder="e.g., 75000" step="1" required>
+          </div>
+
+          <div class="form-group">
+            <label for="entryPrice">Entry Price *</label>
+            <input type="number" id="entryPrice" placeholder="e.g., 250" step="0.01" required>
+          </div>
+
+          <div class="form-group">
+            <label for="quantity">Quantity *</label>
+            <input type="number" id="quantity" placeholder="e.g., 1" step="1" required>
+          </div>
+
+          <div class="form-group">
+            <label for="trailingPercent">Trailing % *</label>
+            <input type="number" id="trailingPercent" placeholder="e.g., 5" step="0.1" required>
+          </div>
+
+          <button type="submit" class="btn-primary btn-add">Add Option</button>
+        </form>
+      </section>
+
+      <!-- Active Options Section -->
+      <section class="options-section">
+        <h2>Tracked Options</h2>
+        <div id="optionsContainer" class="options-grid">
+          <div class="no-data">No options tracked yet. Add one to get started!</div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2025 Sensex Options Tracker | Concentrate on Sensex</p>
+    </footer>
+  </div>
+
+  <!-- Price Update Modal -->
+  <div id="priceModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Update Price</h2>
+      <form id="priceForm">
+        <div class="form-group">
+          <label for="newPrice">New Price *</label>
+          <input type="number" id="newPrice" placeholder="Enter new price" step="0.01" required>
+        </div>
+        <button type="submit" class="btn-primary">Update</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Statistics Section (bottom) -->
+  <section class="stats-section">
+    <!-- Animated Candlestick Chart -->
+    <div class="candlestick-chart">
+      <div class="candlestick">
+        <div class="candle-body" style="animation-delay: 0s;"></div>
+        <span class="candle-label">1H</span>
+      </div>
+      <div class="candlestick">
+        <div class="candle-body" style="animation-delay: 0.2s;"></div>
+        <span class="candle-label">2H</span>
+      </div>
+      <div class="candlestick">
+        <div class="candle-body" style="animation-delay: 0.4s;"></div>
+        <span class="candle-label">3H</span>
+      </div>
+      <div class="candlestick">
+        <div class="candle-body" style="animation-delay: 0.6s;"></div>
+        <span class="candle-label">4H</span>
+      </div>
+      <div class="candlestick">
+        <div class="candle-body" style="animation-delay: 0.8s;"></div>
+        <span class="candle-label">5H</span>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>Total Tracked</h3>
+        <p id="totalTracked">0</p>
+      </div>
+      <div class="stat-card">
+        <h3>Active</h3>
+        <p id="totalActive">0</p>
+      </div>
+      <div class="stat-card">
+        <h3>Stoploss Hit</h3>
+        <p id="totalStoploss">0</p>
+      </div>
+      <div class="stat-card">
+        <h3>Exited</h3>
+        <p id="totalExited">0</p>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
